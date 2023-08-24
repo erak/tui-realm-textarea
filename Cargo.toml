@@ -19,7 +19,7 @@ lazy-regex = "^3"
 tuirealm = { version = "^1.8.0", default-features = false, features = [
   "derive",
 ] }
-tui-textarea = "^0.2"
+tui-textarea = { git = "https://github.com/erak/tui-textarea.git", branch = "textwrap" }
 
 [dev-dependencies]
 crossterm = "^0.25"
