@@ -241,6 +241,7 @@ impl<'a> Default for Editor<'a> {
                         .add_modifier(TextModifiers::ITALIC),
                 )
                 .max_histories(64)
+                .wrap(true)
                 .scroll_step(4)
                 .status_bar(
                     "README.md Ln {ROW}, Col {COL}",

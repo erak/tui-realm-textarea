@@ -167,6 +167,7 @@ pub const TEXTAREA_CURSOR_STYLE: &str = "cursor-style";
 pub const TEXTAREA_FOOTER_FMT: &str = "footer-fmt";
 pub const TEXTAREA_LINE_NUMBER_STYLE: &str = "line-number-style";
 pub const TEXTAREA_MAX_HISTORY: &str = "max-history";
+pub const TEXTAREA_WRAP: &str = "wrap";
 pub const TEXTAREA_STATUS_FMT: &str = "status-fmt";
 pub const TEXTAREA_TAB_SIZE: &str = "tab-size";
 pub const TEXTAREA_HARD_TAB: &str = "hard-tab";
@@ -268,6 +269,14 @@ impl<'a> TextArea<'a> {
         self.attr(
             Attribute::Custom(TEXTAREA_MAX_HISTORY),
             AttrValue::Payload(PropPayload::One(PropValue::Usize(max))),
+        );
+        self
+    }
+
+    pub fn wrap(mut self, wrap: bool) -> Self {
+        self.attr(
+            Attribute::Custom(TEXTAREA_WRAP),
+            AttrValue::Payload(PropPayload::One(PropValue::Bool(wrap))),
         );
         self
     }
@@ -502,6 +511,12 @@ impl<'a> MockComponent for TextArea<'a> {
                 AttrValue::Payload(PropPayload::One(PropValue::Usize(max))),
             ) => {
                 self.widget.set_max_histories(max);
+            }
+            (
+                Attribute::Custom(TEXTAREA_WRAP),
+                AttrValue::Payload(PropPayload::One(PropValue::Bool(wrap))),
+            ) => {
+                self.widget.set_wrap(wrap);
             }
             (
                 Attribute::Custom(TEXTAREA_STATUS_FMT),
