@@ -448,7 +448,6 @@ impl<'a> MockComponent for TextArea<'a> {
                     .as_ref(),
                 )
                 .split(area);
-
             // Remove cursor if not in focus
             let focus = self
                 .props
